@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+
+
+{% block contenido %}
+
+
+<h2 class="section-heading text-uppercase">Contactenos</h2>
+
+
+ 
+
+<!-- <form action="" method="POST">
+    {{ formulario.as_p }}
+    {% csrf_token %}
+    <div class="text-center">
+        <div id="success"></div>
+        <button class="btn btn-primary btn-xl text-uppercase"  type="submit" name="sndmsj">Enviar</button>
+    </div>
+</form> -->
+
+<form action=""  method="POST">
+    {% csrf_token %}
+    <div class="form-group">
+    <div class="form-group">
+        <label for="">Tipo De Petición</label>
+        {{formulario.tipomsj}}
+    </div>
+</div>
+    <div class="row align-items-stretch mb-5">
+        <div class="col-md-6">
+            <div class="form-group">
+               <label for="">Tu nombre</label>
+                {{ formulario.usuario }}
+            </div>
+            <div class="form-group">
+               <label for="">Correo Electronico</label>
+               {{ formulario.correo }}
+            </div>
+            <div class="form-group mb-md-0">
+                <label for="">Mensaje</label>
+                {{ formulario.mensaje }}
+            </div>
+        </div>
+        
+    </div>
+    <div class="text-center">
+        <span class="col-md-9">
+            {% if 'ok' in request.GET %} 
+
+            <span class="alert alert-success">Mensaje Enviado</span>
+
+            {% endif %}
+
+        </span>
+
+        <span class="col-md-9">
+            {% if 'fail' in request.GET %} 
+
+            <span class="alert alert-success">Mensaje No Enviado</span>
+
+            {% endif %}
+
+        </span>
+        <button class="btn btn-primary btn-xl text-uppercase"  type="submit">Enviar</button>
+    </div>
+</form> 
+</div>
+</section> 
+
+
+
+{% endblock %}
